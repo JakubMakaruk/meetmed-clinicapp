@@ -1,0 +1,265 @@
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  padding-bottom: 60px;
+  text-transform: uppercase;
+  -webkit-transition: background-color .6s;
+  transition: background-color .6s;
+}
+
+nav a, nav i, nav .green-text {
+  color: #ffffff;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+}
+
+nav i {
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #dbdbdb;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav .active {
+  color: #dbdbdb;
+}
+
+.bg-info {
+  background-color: transparent;
+  background: #22a39d;
+  background: -webkit-gradient(linear, left top, right top, from(#22a39d), color-stop(35%, #76e0d6), to(#168b82));
+  background: linear-gradient(90deg, #22a39d 0%, #76e0d6 35%, #168b82 100%);
+}
+
+.nav-link {
+  margin-right: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.wrapper .today-appointments {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.wrapper .header-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .header-date p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+}
+
+.wrapper .header-date p .today {
+  padding-left: 10px;
+  font-weight: bold;
+  color: #27bbb4;
+}
+
+.wrapper .btn {
+  margin: 20px;
+  padding: 30px;
+}
+
+.wrapper .btn h1 {
+  padding-bottom: 30px;
+}
+
+.wrapper .btn .description {
+  display: none;
+}
+
+.wrapper i {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.wrapper .empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.popup-properties {
+  width: 700px;
+  height: 540px;
+  padding: 30px 20px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 2;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 33px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 33px 2px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  top: -200%;
+  -webkit-transform: translate(-50%, -50%) scale(0.5);
+          transform: translate(-50%, -50%) scale(0.5);
+  -webkit-transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, -webkit-transform 1000ms ease-in-out;
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, -webkit-transform 1000ms ease-in-out;
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out, -webkit-transform 1000ms ease-in-out;
+}
+
+.popup-properties div {
+  position: relative;
+  top: 10px;
+  opacity: 0;
+}
+
+.popup-properties.active {
+  opacity: 1;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  -webkit-transition: -webkit-transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  transition: -webkit-transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  transition: transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  transition: transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19), -webkit-transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+
+.popup-properties.active .fa-calendar-alt {
+  font-size: 30px;
+  color: #18c5c5;
+}
+
+.popup-properties.active .title {
+  text-align: left;
+  font-size: 25px;
+  font-weight: 700;
+  -webkit-transition: all 300ms ease-in out 250ms;
+  transition: all 300ms ease-in out 250ms;
+}
+
+.popup-properties.active .title i {
+  padding: 0px 20px 0px 10px;
+}
+
+.popup-properties.active hr {
+  margin-bottom: 0px !important;
+}
+
+.popup-properties.active h1 {
+  padding: 10px 0px;
+}
+
+.popup-properties.active span {
+  font-weight: bold;
+}
+
+.popup-properties.active .description-properties {
+  padding-top: 10px;
+  color: #222222;
+  font-size: 15px;
+  -webkit-transition: all 300ms ease-in out 300ms;
+  transition: all 300ms ease-in out 300ms;
+}
+
+.popup-properties.active .description-properties .col-4 {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+.popup-properties.active .description-properties .col-8 {
+  padding-left: 0px !important;
+  padding-right: 20px !important;
+}
+
+.popup-properties.active .description-properties .buttons {
+  -webkit-transition: all 300ms ease-in out 350ms;
+  transition: all 300ms ease-in out 350ms;
+  margin-top: 30px;
+}
+
+.popup-properties.active .description-properties .buttons button {
+  margin: 0px 20px;
+  height: 50px;
+  width: 140px;
+  background: #111111;
+  color: #f5f5f5;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+.popup-properties.active .description-properties .buttons .close-properties {
+  background: #bd0f0f;
+}
+
+.popup-properties.active .description-properties .buttons .done-properties {
+  background: #00ca5b;
+}
+
+.popup-properties.active .description-properties .buttons .close-properties:hover {
+  background: #690303;
+}
+
+.popup-properties.active .description-properties .buttons .done-properties:hover {
+  background: #01813b;
+}
+
+.popup-properties.active div {
+  top: 0px;
+  opacity: 1;
+}
+
+#popup-properties-background {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+/*# sourceMappingURL=doctortoday.css.map */

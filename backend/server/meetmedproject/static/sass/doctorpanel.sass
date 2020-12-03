@@ -1,0 +1,108 @@
+$greencolor: #27bbb4
+$graycolor: #dbdbdb
+
+*, *::after, *::before
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+html, body
+    height: 100%
+
+nav
+    padding-bottom: 60px
+    text-transform: uppercase
+    transition: background-color .6s
+
+    a, i, .green-text
+        color: #ffffff
+        transition: color .4s
+    i
+        padding: 20px
+
+    a:hover
+        color: $graycolor
+
+    .navbar-brand
+        font-weight: bold
+        font-family: 'Montserrat', sans-serif
+    .active
+        color: $graycolor
+.bg-info
+    background-color: transparent
+    background: rgb(34,163,157)
+    background: linear-gradient(90deg, rgba(34,163,157,1) 0%, rgba(118,224,214,1) 35%, rgba(22,139,130,1) 100%)
+
+.nav-link
+    margin-right: 30px
+    font-family: 'Poppins', sans-serif
+.btn
+    margin-right: 5px
+
+#statistics
+    margin-top: 30px
+    display: flex
+    justify-content: center
+    align-items: center
+    .wrapper
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        align-items: center
+        .rectangle
+            margin: 30px 40px
+            width: 300px
+            height: 120px
+            -webkit-box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.67)
+            -moz-box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.67)
+            box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.67)
+            display: flex
+            justify-content: center
+            align-items: center
+            .left, .right
+                display: flex
+                justify-content: center
+                align-items: center
+            .left
+                width: 20%
+            .right
+                width: 60%
+            p
+                margin-bottom: 0px
+                font-size: 20px
+                font-weight: bold
+
+            .circle
+                text-align: center
+                width: 50px
+                height: 50px
+                background-color: rgba(0,0,0,0.6)
+                border-radius: 100px
+                i
+                    font-size: 20px
+                    text-align: center
+                    vertical-align: middle
+                    line-height: 50px
+
+        .total-today-appointments
+            background-image: linear-gradient(to right, #76b852 0%, #8DC26F  51%, #76b852  100%)
+            background-size: 200% auto
+            color: white
+            border-radius: 5px
+        .total-appointments
+            background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%)
+            background-size: 200% auto
+            color: white
+            border-radius: 5px
+        .total-patients
+            background-image: linear-gradient(to right, #FFB75E 0%, #ED8F03  51%, #FFB75E  100%)
+            background-size: 200% auto
+            color: white
+            border-radius: 5px
+        .total-work-hours
+            background-image: linear-gradient(to right, #603813 0%, #816250  51%, #603813  100%)
+            background-size: 200% auto
+            color: white
+            border-radius: 5px
+            p
+                font-size: 14px
