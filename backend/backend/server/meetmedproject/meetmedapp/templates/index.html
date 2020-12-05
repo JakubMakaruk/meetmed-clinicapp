@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} MeetMed - Strona główna {% endblock %}
+{% block head %}
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+        <!-- SLICK.JS -->
+
+        <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
+
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" media='screen and (min-width: 576px)' href="{% static 'css/small.css' %}">
+        <link rel="stylesheet" media='screen and (min-width: 768px)' href="{% static 'css/medium.css' %}">
+        <link rel="stylesheet" media='screen and (min-width: 992px)' href="{% static 'css/large.css' %}">
+        <script src="https://kit.fontawesome.com/922a5fe6ec.js" crossorigin="anonymous"></script>
+    </head>
+{% endblock %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <a class="navbar-brand" href="#"><i class="fas fa-user-md"></i>Meet<span class="green-text">Med</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" href="#home">Strona główna</a>
+                <a class="nav-link" href="#aboutus">O nas</a>
+                <a class="nav-link" href="#services">Usługi</a>
+                <a class="nav-link" href="#doctors">Lekarze</a>
+                <a class="nav-link" href="#contact">Kontakt</a>
+                {% if user.is_authenticated %}
+                    <button type="button" class="btn btn-info" onclick="window.location.href='/account/userhome'">Panel użytkownika</button>
+                {% else %}
+                    <button type="button" class="btn btn-outline-info" onclick="window.location.href='/account/login'">Zaloguj się</button>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="hero-img">
+            <div class="hero-shadow"></div>
+            <div class="hero-text">
+                <h1 class="os-animation" data-animation="bounceInUp" data-delay=".2s">Przychodnia <span class="green-text"><b>MeetMed</b></span></h1>
+                <p class="os-animation" data-animation="bounceInUp" data-delay=".5s">Profesjonalna pomoc medyczna dla każdego pacjenta. </p>
+                <a class="btn btn-outline-light os-animation" data-animation="bounceInUp" data-delay=".8s" href="#aboutus">Poznaj nas</a>
+                <a href="#aboutus"><i class="fas fa-caret-down"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="aboutus" class="scroll-fix">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="wrapper">
+                    <h2>o nas</h2>
+                    <div class="underline-green"></div>
+
+                    <div class="aboutus-text">Przychodnia MEETMED została założona w 2010 roku. Jest liderem na rynku usług medycznych w województwie lubelskim. Na swoim koncie ma wiele zdobytych osiągnięć naukowych oraz wiele pozytywnych opinii pacjentów, które są potwierdzeniem zdobytych certyfikatów dbania o pacjentów. Nasi doktorzy są wszechstronnie wykształceni i posiadają cenne doświadczenie. Dbamy o każdego pacjenta i zawsze jesteśmy gotowi do pracy.</div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 text-center aboutus-hover os-animation" data-animation="bounceIn" data-delay=".1s">
+                            <p><i class="fas fa-medkit"></i></p>
+                            <p>Oferujemy profesjonalne podejście do pacjenta. Podchodzimy indywidualnie do każdego pacjenta w celu skupienia uwagi na problemie zdrowotnym pacjenta. Dokładamy wszelkich starań, aby każdy pacjent był zadowolony z naszych usług.</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 text-center aboutus-hover os-animation" data-animation="bounceIn" data-delay=".2s">
+                            <p><i class="fas fa-stethoscope"></i></p>
+                            <p>Stawiamy na jakość leczenia. Korzystamy z nowoczesnych urządzeń. Ze swojej strony gwarantujemy profesjonalną pomoc medyczną od naszych wykształconych i doświadczonych lekarzy.</p>
+                        </div>
+                        <div class="col-sm-6 col-md-4 text-center aboutus-hover os-animation" data-animation="bounceIn" data-delay=".3s">
+                            <p><i class="fas fa-shield-virus"></i></p>
+                            <p>Gwarantujemy ochronę dla każdego pacjenta oferując tylko sprawdzone rozwiązania. Dzięki nam zwiększysz kontrolę nad swoim zdrowiem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="scroll-fix">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="wrapper">
+                    <h2>NASZE USŁUGI</h2>
+                    <div class="underline-gray"></div>
+                    
+                    <div class="services-text">Oferujemy poniższe usługi dostępne u naszych ekspertów. 
+                        <br><b>Zaloguj się na swoje konto i zarezerwuj wizytę już dziś.</b></div>
+                    <div class="cards-services">
+                        <div class="card os-animation" data-animation="fadeInUp" data-delay=".1s">
+                            <div class="card-positioning">
+                                <div class="img-container">
+                                    <img src="{% static 'img/index/doctor.svg' %}" width="80" height="80">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Pomoc lekarska</h5>
+                                    <p class="card-text">Profesjonalna pomoc  podczas wizyty u naszych niezawodnych i doświadczonych lekarzy.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card os-animation" data-animation="fadeInUp" data-delay=".2s">
+                            <div class="card-positioning">
+                                <div class="img-container">
+                                    <img src="{% static 'img/index/laboratory.svg' %}" width="80" height="80">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Badania laboratoryjne</h5>
+                                    <p class="card-text">Wykonujemy szeroki zakres badań krwi, moczu oraz kału. Wykonujemy badania biochemiczne, mikrobiologiczne oraz genetyczne.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card os-animation" data-animation="fadeInUp" data-delay=".3s">
+                            <div class="card-positioning">
+                                <div class="img-container">
+                                    <img src="{% static 'img/index/coronavirus.svg' %}" width="80" height="80">
+                                </div>
+                                <div class="card-body">
+                                <h5 class="card-title">Badania SARS-CoV-2/COVID-19</h5>
+                                <p class="card-text">Badanie z krwi obwodowej wykrywające przeciwciała klasy IgG przeciwko SARS-CoV-2.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card os-animation" data-animation="fadeInUp" data-delay=".4s">
+                            <div class="card-positioning">
+                                <div class="img-container">
+                                    <img src="{% static 'img/index/rtg.svg' %}" width="80" height="80">
+                                </div>
+                                <div class="card-body">
+                                <h5 class="card-title">Badania RTG</h5>
+                                <p class="card-text">Nowoczesne aparaty RTG w naszej przychodni umożliwiają kostną, płucną i stomatologiczną diagnostykę obrazową.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card os-animation" data-animation="fadeInUp" data-delay=".5s">
+                            <div class="card-positioning">
+                                <div class="img-container">
+                                    <img src="{% static 'img/index/ultrasonography.svg' %}" width="80" height="80">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Badania USG</h5>
+                                    <p class="card-text">Nieinwazyjna metoda diagnostyki obrazowej. Wykonujemy badania USG w pełnym zakresie.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card os-animation" data-animation="fadeInUp" data-delay=".6s">
+                            <div class="card-positioning">
+                                <div class="img-container">
+                                    <img src="{% static 'img/index/mri.svg' %}" width="80" height="80">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Rezonans magnetyczny</h5>
+                                    <p class="card-text">Rezonans magnetyczny jest jedną z podstawowych, nowoczesnych i bardzo bezpiecznych metod nieinwazyjnej diagnostyki obrazowej.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="doctors" class="scroll-fix">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="wrapper">
+                    <h2>LEKARZE</h2>
+                    <div class="underline-green"></div>
+
+                    <div class="card-deck wrapper doctors-carousel">
+                        <div class="card">
+                            <img src="{% static 'img/index/doctor1.jpg' %}" class="card-img-top" alt="/img/index/doctor">
+                            <div class="card-body">
+                                <h6>Lek. med. Endokrynolog</h6>
+                                <h5 class="card-title">Anna Kowalska</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore itaque officia, tenetur expedita, quos ipsa, natus minima sunt aperiam eligendi provident repellendus! Officia doloribus quaerat rerum sit vero, fuga sed!</p>
+                            </div>
+                            <div class="card-footer" style="text-align: center;">
+                                <a href="https://www.linkedin.com/in/jakub-makaruk-b109a3155/" target="_blank">Profil Linked<i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="{% static 'img/index/doctor2.jpg' %}" class="card-img-top" alt="/img/index/doctor">
+                            <div class="card-body">
+                                <h6>Lek. med. Internista, Lekarz medycyny pracy</h6>
+                                <h5 class="card-title">Dariusz Kowal</h5>
+                                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi deserunt cupiditate accusamus esse doloremque impedit adipisci repellendus voluptate temporibus placeat soluta vel saepe totam natus, vitae reiciendis pariatur, a modi.</p>
+                            </div>
+                            <div class="card-footer" style="text-align: center;">
+                                <a href="https://www.linkedin.com/in/jakub-makaruk-b109a3155/" target="_blank">Profil Linked<i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="{% static 'img/index/doctor3.jpg' %}" class="card-img-top" alt="/img/index/doctor">
+                            <div class="card-body">
+                                <h6>Lek. med. Radiolog</h6>
+                                <h5 class="card-title">Will Smith</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt labore sed saepe iure, ab, provident voluptatibus iusto quis sit eos totam, ea aut. Nostrum expedita eos dolor dolores, mollitia nobis?</p>
+                            </div>
+                            <div class="card-footer" style="text-align: center;">
+                                <a href="https://www.linkedin.com/in/jakub-makaruk-b109a3155/" target="_blank">Profil Linked<i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="{% static 'img/index/doctor4.jpg' %}" class="card-img-top" alt="/img/index/doctor">
+                            <div class="card-body">
+                                <h6>Lek. med. Neurochirurg</h6>
+                                <h5 class="card-title">Karol Ryza</h5>
+                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores ducimus et exercitationem, ex facere dolor labore blanditiis ipsam pariatur quia suscipit. Nobis, magnam! Debitis consequuntur necessitatibus assumenda libero at laudantium?</p>
+                            </div>
+                            <div class="card-footer" style="text-align: center;">
+                                <a href="https://www.linkedin.com/in/jakub-makaruk-b109a3155/" target="_blank">Profil Linked<i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="{% static 'img/index/doctor5.jpg' %}" class="card-img-top" alt="/img/index/doctor">
+                            <div class="card-body">
+                                <h6>Lek. med. Hematolog</h6>
+                                <h5 class="card-title">Magdalena Jabłońska</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, mollitia optio? Sed repellendus officia delectus vero molestiae similique cumque porro quasi inventore veritatis. Ipsa voluptatum ut fuga dolores blanditiis molestias!</p>
+                            </div>
+                            <div class="card-footer" style="text-align: center;">
+                                <a href="https://www.linkedin.com/in/jakub-makaruk-b109a3155/" target="_blank">Profil Linked<i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="{% static 'img/index/doctor6.jpg' %}" class="card-img-top" alt="/img/index/doctor">
+                            <div class="card-body">
+                                <h6>Lek. med. Ginekolog, USG</h6>
+                                <h5 class="card-title">Anita Nowak</h5>
+                                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint distinctio nisi aut sapiente minima accusantium quos soluta vero. Molestias minima consequuntur cupiditate quam ab ipsam facilis quasi obcaecati molestiae veritatis?</p>
+                            </div>
+                            <div class="card-footer" style="text-align: center;">
+                                <a href="https://www.linkedin.com/in/jakub-makaruk-b109a3155/" target="_blank">Profil Linked<i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="map" class="scroll-fix">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="map-item">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2497.5703504201347!2d22.54073751591776!3d51.24540723764583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4722576368d57b3f%3A0x4619afcc278ac2a0!2sAkademicka%209%2C%2020-033%20Lublin!5e0!3m2!1spl!2spl!4v1602887288164!5m2!1spl!2spl"  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="scroll-fix">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="wrapper">
+                    <div class="left-side">
+                        <a href="#">MeetMed</a>
+                        <p>ul. Akademicka 9<br>20-033 Lublin</p>
+                        <p>jakub.makaruk@gmail.com<br>(81) 537-5212</p>
+                    </div>
+                    <div class="middle-side text-center">
+                        <h5>Godziny otwarcia:</h5>
+                        <p>
+                            pon. 10:00-20:00</br>
+                            wt. 10:00-20:00</br>
+                            śr. 10:00-20:00</br>
+                            czw. 10:00-20:00</br>
+                            pt. 10:00-20:00</br>
+                            sob. 10:00-14:00</br>
+                        </p>
+                    </div>
+                    <div class="right-side text-center">
+                        <h5>Bądź z nami na bieżąco</h5>
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"></i><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <hr>
+                        <p>Copyright © 2020 Jakub Makaruk</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block javascript %}
+    <!-- SLICK.JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="{% static 'js/animation.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min' %}"></script>
+    <script src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

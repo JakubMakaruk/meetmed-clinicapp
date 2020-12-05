@@ -1,0 +1,473 @@
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.wrapper h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.underline-green {
+  margin: 0 auto 50px;
+  width: 60%;
+  height: 4px;
+  background-color: #27bbb4;
+}
+
+.underline-gray {
+  margin: 0 auto 50px;
+  width: 60%;
+  height: 4px;
+  background-color: #e9ecef;
+}
+
+.scroll-fix::before {
+  content: '';
+  display: block;
+  height: 86px;
+  margin-top: -86px;
+}
+
+.jumbotron {
+  margin-bottom: 0px;
+}
+
+nav {
+  text-transform: uppercase;
+  -webkit-transition: background-color .6s;
+  transition: background-color .6s;
+}
+
+nav a, nav i {
+  color: #ffffff;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+}
+
+nav i {
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #27bbb4;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+}
+
+nav .active {
+  color: #27bbb4;
+}
+
+.nav-link {
+  margin-right: 30px;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+.shadow-bg {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+header {
+  color: #ffffff;
+  overflow: hidden;
+}
+
+header h1 {
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+header .hero-img {
+  position: relative;
+  height: 100vh;
+  background-image: url("../img/index/doctor1920x1280.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+header .hero-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -10;
+}
+
+header .hero-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+header .hero-text p {
+  padding: 10px;
+  font-size: 12px;
+}
+
+header .btn-outline-light {
+  text-transform: uppercase;
+}
+
+header .fa-caret-down {
+  display: none;
+}
+
+.green-text {
+  color: #27bbb4;
+}
+
+@media (min-width: 375px) {
+  header h1 {
+    font-size: 36px;
+  }
+  header .hero-text p {
+    font-size: 16px;
+  }
+}
+
+#aboutus i {
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+#aboutus p {
+  font-size: 15px;
+}
+
+#aboutus .aboutus-hover {
+  -webkit-transition: color .3s;
+  transition: color .3s;
+  visibility: hidden;
+}
+
+#aboutus .aboutus-hover:hover {
+  color: #27bbb4;
+}
+
+#aboutus .aboutus-text {
+  font-size: 15px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#aboutus .row {
+  cursor: default;
+}
+
+#services .jumbotron {
+  background-color: #27bbb4;
+}
+
+#services .cards-services {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  flex-gap: 10px;
+}
+
+#services .cards-services h5, #services .cards-services p {
+  text-align: center;
+}
+
+#services .services-text {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#services h2 {
+  color: #e9ecef;
+}
+
+#services .img-container {
+  padding: 30px 0px 0px 0px;
+  text-align: center;
+}
+
+#services .card {
+  visibility: hidden;
+  width: 30%;
+  height: 260px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1343px) {
+  #services .card {
+    height: 340px;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  #services .card {
+    height: 380px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  #services .card {
+    height: 480px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+#services .card .card-positioning {
+  margin: 0;
+}
+
+#doctors h6 {
+  font-size: 13px;
+  color: #797979;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#doctors .jumbotron {
+  position: relative;
+  z-index: 0;
+}
+
+#doctors .jumbotron .wrapper {
+  width: 90%;
+}
+
+#doctors .card {
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+#doctors .card img {
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 0% 0%;
+     object-position: 0% 0%;
+  -webkit-box-shadow: 0px 10px 21px -19px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 10px 21px -19px rgba(0, 0, 0, 0.75);
+}
+
+#doctors .card i {
+  font-size: px;
+  padding: 10px 2px;
+}
+
+#doctors .card .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#doctors .card:hover {
+  -webkit-transform: scale(0.96);
+          transform: scale(0.96);
+}
+
+#doctors .card-body {
+  height: 300px;
+}
+
+#doctors .card-title {
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#doctors .card-text {
+  padding: 0 15px 15px 15px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1840px) {
+  #doctors .card-text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  #doctors .card-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1388px) {
+  #doctors .card-text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  #doctors .card-text {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 978px) {
+  #doctors .card-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 928px) {
+  #doctors .card-text {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 806px) {
+  #doctors .card-text {
+    font-size: 10px;
+  }
+}
+
+#map .jumbotron {
+  position: relative;
+  z-index: 0;
+  padding: 0;
+  height: 400px;
+}
+
+#map iframe {
+  width: 100%;
+  height: 400px;
+}
+
+#contact .jumbotron {
+  position: relative;
+  z-index: 0;
+  padding: 0;
+  background-color: #27bbb4;
+}
+
+#contact .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#contact .left-side, #contact .middle-side, #contact .right-side {
+  padding: 100px 50px;
+  margin: 0px 0px;
+  width: 400px;
+}
+
+#contact .left-side p, #contact .left-side h5, #contact .middle-side p, #contact .middle-side h5, #contact .right-side p, #contact .right-side h5 {
+  color: #ffffff;
+}
+
+#contact .left-side {
+  -webkit-transition: background-color .6s;
+  transition: background-color .6s;
+}
+
+#contact .left-side a {
+  text-transform: uppercase;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+  padding-left: 50px;
+}
+
+#contact .left-side a:hover {
+  color: #e9ecef;
+  text-decoration: none;
+}
+
+#contact .left-side p {
+  font-size: 16px;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+#contact .middle-side h5 {
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+#contact .right-side hr {
+  border-color: #ffffff;
+}
+
+#contact .right-side h5 {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+#contact .right-side i {
+  font-size: 30px;
+  color: #ffffff;
+  padding: 10px 20px;
+}
+/*# sourceMappingURL=main.css.map */

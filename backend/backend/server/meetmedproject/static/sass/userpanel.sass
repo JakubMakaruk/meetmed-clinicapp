@@ -1,0 +1,119 @@
+$greencolor: #27bbb4
+$graycolor: #dbdbdb
+
+$font-monster: 'Montserrat', sans-serif
+
+*, *::after, *::before
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+body
+    height: 100vh
+    width: 100vw
+
+nav
+    padding-bottom: 60px
+    text-transform: uppercase
+    transition: background-color .6s
+
+    a, i, .green-text
+        color: #ffffff
+        transition: color .4s
+    i
+        padding: 20px
+
+    a:hover
+        color: $graycolor
+
+    .navbar-brand
+        font-weight: bold
+        font-family: 'Montserrat', sans-serif
+    .active
+        color: $greencolor
+.bg-info
+    background-color: transparent
+    background: rgb(34,163,157)
+    background: linear-gradient(90deg, rgba(34,163,157,1) 0%, rgba(118,224,214,1) 35%, rgba(22,139,130,1) 100%)
+
+.nav-link
+    margin-right: 30px
+    font-family: 'Poppins', sans-serif
+.btn
+    margin-right: 5px
+
+#news
+    .card
+        display: inline
+        border: none
+        border-radius: 25px
+        box-shadow: 0 0 15px #a0a0a0
+        z-index: 1
+        margin: 20px
+        transition: transform .4s
+        img
+            position: relative
+            height: 500px
+            object-fit: cover
+            filter: brightness(70%)
+    .card:hover
+        transform: scale(0.97)
+.card-footer
+    background-color: rgba(0,0,0,.0)
+
+.wrapper
+    width: 90%
+    margin: 0 auto
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    gap: 100px
+
+span
+    font-family: $font-monster
+    text-transform: uppercase
+    padding-left: 50px
+    font-size: 30px
+
+.left
+    margin-top: 30px
+    width: 70%
+    .card-description
+        position: relative
+        p
+            margin-bottom: 0
+            font-size: 1rem
+        .btn
+            position: absolute
+            bottom: 0
+            right: 0
+
+.right
+    width: 20%
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-top: 50px
+    hr
+        margin-bottom: 5px
+    p
+        font-size: 16px
+    .card-body
+        padding: 5px
+
+
+.card-img-1
+    background-color: $greencolor
+
+.card-img, .card-img-top
+    border-top-left-radius: 25px
+    border-top-right-radius: 25px
+
+.slick-prev:before, .slick-next:before
+    color: #424242
+
+.checked
+    color: gold
+.fa-star
+    padding-left: 5px
