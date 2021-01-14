@@ -24,11 +24,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-link active" href="doctorhome">Panel główny</a>
-                <a class="nav-link" href="doctortoday">Dzisiejszy dzień</a>
-                <a class="nav-link" href="doctorcalendar">Kalendarz</a>
-                <a class="nav-link" href="doctorpanel">Panel lekarza</a>
-                <a class="nav-link" href="doctoraccount">Ustawienia konta</a>
+                <a class="nav-link" href="userpanel">Panel główny</a>{% load hasgroup %}
+                {% if request.user|has_group:"Doctor" %} 
+                    <a class="nav-link" href="doctortoday">Dzisiejszy dzień</a>
+                    <a class="nav-link" href="doctorcalendar">Kalendarz</a>
+                    <a class="nav-link cur" href="doctorpanel">Panel lekarza</a>
+                {% endif %}
+                <a class="nav-link" href="settings">Ustawienia konta</a>
                 <a href="{% url 'logout' %}"><button class="btn btn-light my-2 my-sm-0">Wyloguj się</button></a>
             </div>
         </div>
@@ -85,6 +87,35 @@
                 </div>
             </div>
         </section>
+        <section id="chart-hyperlinks">
+            <div class="chart-container">
+                <p>Produktywność w tym tygodniu (ilość wizyt w poszczególnych dniach)</p>
+                <canvas id="chart"></canvas>
+            </div>
+            <div class="right-panel">
+                <a href="https://www.mp.pl/pacjent/leki/" target="_blank">
+                    <div class="rectangle hyp-medicines">
+                        BAZA LEKÓW
+                    </div>
+                </a>
+                <a href="https://www.gdziepolek.pl/" target="_blank">
+                    <div class="rectangle hyp-gdziepolekweb">
+                        GDZIEPOLEK.PL
+                    </div>
+                </a>
+                <button type="submit" id="btn-getPDF" onclick="getTodayPlanPDF(this.id)">
+                    <div class="rectangle hyp-printday">
+                        POBIERZ DZISIEJSZY PLAN
+                    </div>
+                </button>
+                <a href="searchpatient">
+                    <div class="rectangle hyp-searchpatient">
+                        WYSZUKAJ PACJENTA
+                    </div>
+                </a>
+            </div>
+        </section>
+        
     </main>
 {% endblock %}
 
@@ -98,4 +129,82 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="{% static 'js/animation.js' %}"></script>
     <script src="{% static 'js/jquery.waypoints.min' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+    <script>
+        var a=100;
+        var b='100';
+        var c=b+a;
+        console.log('1'/'100');
+        console.log(typeof('1'/'100'))
+
+        function getTodayPlanPDF(id) {
+            console.log(id)
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'render_pdf_view' %}",
+                data: {
+                    csrfmiddlewaretoken: window.CSRF_TOKEN,
+                    'id': id
+                },
+                success: function(data) {
+                    var blob=new Blob([data]);
+                    var link=document.createElement('a');
+                    link.href=window.URL.createObjectURL(blob);
+                    link.download="{{ today }}/{{ user.first_name }}{{ user.last_name }}.pdf";
+                    link.click();
+                }
+            })
+        };
+        var ctx = document.getElementById('chart').getContext('2d');
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 15;
+        Chart.defaults.global.defaultFontColor = '#777';
+        Chart.defaults.global.elements.point.radius = 7;
+
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{% for w in week %}
+                            '{{ w|date:'d.m.Y' }}',
+                        {% endfor %}],
+                datasets: [{
+                    data: [{% for i in countEachDay %}
+                            {{ i }},
+                            {% endfor %}],
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                    borderColor: '#1c857f',
+                    borderWidth: 5,
+                    hoverBorderWidth: 11,
+                    pointBackgroundColor: '#1c857f',
+                    pointHitRadius: 6,
+                    pointStyle: 'circle',
+                    lineTension: 0
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                title: {
+                    display: false,
+                    text: 'Produktywność w tym tygodniu (ilość wizyt w poszczególnych dniach)',
+                    fontSize: 20
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 50
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 {% endblock %}

@@ -187,6 +187,10 @@ header .fa-caret-down {
   text-align: center;
 }
 
+#aboutus .row {
+  cursor: default;
+}
+
 #services .jumbotron {
   background-color: #27bbb4;
 }

@@ -23,7 +23,7 @@ nav
     .navbar-brand
         font-weight: bold
         font-family: 'Montserrat', sans-serif
-    .active
+    .cur
         color: $graycolor
 .bg-info
     background-color: transparent
@@ -35,14 +35,11 @@ nav
     font-family: 'Poppins', sans-serif
 
 .wrapper
-    width: 95%
+    width: 90%
     margin: 0 auto
     padding-top: 30px
-    .today-appointments
-        display: flex
-        flex-wrap: wrap
-        align-content: center
     .header-date
+        padding-bottom: 20px
         display: flex
         justify-content: center
         align-items: center
@@ -53,22 +50,40 @@ nav
                 padding-left: 10px
                 font-weight: bold
                 color: $greencolor
-    .btn
-        margin: 20px
-        padding: 30px
-        h1
-            padding-bottom: 30px
-        .description
-            display: none
-    i
-        margin-top: auto
-        margin-bottom: auto
+    tr
+        display: table
+        width: 100%
+        td, th
+            display: table-cell
+            width: 20%
+            vertical-align: middle
+        .index-row
+            width: 10%
+    table
+        counter-reset: row-num
+    table
+        tbody
+            tr
+                counter-increment: row-num
+            th:first-child::before
+                content: counter(row-num)
+
+    .strikethrough
+        background: repeating-linear-gradient(180deg, black 0%, black 100%)
+        background-size: 100% 1px
+        background-position: center
+        background-repeat: no-repeat
+        z-index: 3
+
     .empty
         position: absolute
         top: 50%
         left: 50%
         margin-right: -50%
         transform: translate(-50%, -50%)
+.btn-done
+    background-color: #76e0d6
+    border-color: #76e0d6
 
 .center
     position: absolute
@@ -119,11 +134,14 @@ nav
     hr
         margin-bottom: 0px !important
     h1
-        padding: 10px 0px
+        padding: 10px 0px 20px 0px
     span
         font-weight: bold
 
     .description-properties
+        position: relative
+        width: 100%
+        height: 100%
         padding-top: 10px
         color: #222222
         font-size: 15px
@@ -135,34 +153,36 @@ nav
             padding-left: 0px !important
             padding-right: 20px !important
 
-        .buttons
-            transition: all 300ms ease-in out 350ms
-            margin-top: 30px
+    .buttons
+        transition: all 300ms ease-in out 350ms
+        position: absolute
+        top: 90%
+        left: 50%
+        margin-right: -50%
+        transform: translate(-50%, -50%)
+        button
+            margin: 0px 20px
+            height: 50px
+            width: 140px
+            background: #111111
+            color: #f5f5f5
+            border: none
+            font-size: 16px
+            font-weight: 600
+            outline: none
+            border-radius: 10px
+            cursor: pointer
+            transition: all 300ms ease-in-out
+        .close-properties
+            background: #bd0f0f
+        .done-properties
+            background: #00ca5b
 
-        .buttons
-            button
-                margin: 0px 20px
-                height: 50px
-                width: 140px
-                background: #111111
-                color: #f5f5f5
-                border: none
-                font-size: 16px
-                font-weight: 600
-                outline: none
-                border-radius: 10px
-                cursor: pointer
-                transition: all 300ms ease-in-out
-            .close-properties
-                background: #bd0f0f
-            .done-properties
-                background: #00ca5b
-
-        .buttons
-            .close-properties:hover
-                background: #690303
-            .done-properties:hover
-                background: #01813b
+    .buttons
+        .close-properties:hover
+            background: #690303
+        .done-properties:hover
+            background: #01813b
     div
         top: 0px
         opacity: 1

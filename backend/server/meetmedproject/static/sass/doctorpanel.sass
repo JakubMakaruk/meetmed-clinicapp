@@ -7,7 +7,7 @@ $graycolor: #dbdbdb
     padding: 0
 
 html, body
-    height: 100%
+    height: 100vh
 
 nav
     padding-bottom: 60px
@@ -26,7 +26,7 @@ nav
     .navbar-brand
         font-weight: bold
         font-family: 'Montserrat', sans-serif
-    .active
+    .cur
         color: $graycolor
 .bg-info
     background-color: transparent
@@ -85,7 +85,7 @@ nav
                     line-height: 50px
 
         .total-today-appointments
-            background-image: linear-gradient(to right, #76b852 0%, #8DC26F  51%, #76b852  100%)
+            background-image: linear-gradient(to right, #02AAB0 0%, #749bbf 51%, #749bbf  100%)
             background-size: 200% auto
             color: white
             border-radius: 5px
@@ -95,14 +95,102 @@ nav
             color: white
             border-radius: 5px
         .total-patients
-            background-image: linear-gradient(to right, #FFB75E 0%, #ED8F03  51%, #FFB75E  100%)
+            background-image: linear-gradient(to right, #185a9d  0%, #43cea2 51%, #43cea2  100%)
             background-size: 200% auto
             color: white
             border-radius: 5px
         .total-work-hours
-            background-image: linear-gradient(to right, #603813 0%, #816250  51%, #603813  100%)
+            background-image: linear-gradient(to right, #00CDAC 0%, #02AAB0  51%, #02AAB0  100%)
             background-size: 200% auto
             color: white
             border-radius: 5px
             p
                 font-size: 14px
+
+#chart-hyperlinks
+    margin-top: 20px
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    gap: 120px
+    .chart-container
+        text-align: center
+        position: relative
+        height: 55vh
+        width: 55vw
+        p
+            margin: 5px
+            font-family: 'Montserrat', sans-serif
+            font-weight: 700
+            font-size: 16px
+            color: #219993
+    #chart
+        height: 100% !important
+        width: 100% !important
+    .right-panel
+        .rectangle
+            margin-top: 40px
+            width: 320px
+            height: 100px
+            -webkit-box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.67)
+            -moz-box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.67)
+            box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.67)
+            display: flex
+            justify-content: center
+            align-items: center
+        .hyp-medicines
+            background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA  51%, #50C9C3  100%)
+            text-transform: uppercase
+            text-align: center
+            color: white
+            font-size: 20px
+            font-weight: 700
+            font-family: 'Montserrat', sans-serif
+            background-size: 200% auto
+            transition: 0.5s
+            border-radius: 10px
+        .hyp-printday
+            background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)
+            text-transform: uppercase
+            text-align: center
+            color: white
+            font-size: 18px
+            font-weight: 700
+            font-family: 'Montserrat', sans-serif
+            background-size: 200% auto
+            transition: 0.5s
+            border-radius: 10px
+        .hyp-gdziepolekweb
+            background-image: linear-gradient(to right, #1D976C 0%, #93F9B9  51%, #1D976C  100%)
+            text-transform: uppercase
+            text-align: center
+            color: white
+            font-size: 20px
+            font-weight: 700
+            font-family: 'Montserrat', sans-serif
+            background-size: 200% auto
+            transition: 0.5s
+            border-radius: 10px
+        .hyp-searchpatient
+            background-image: linear-gradient(to right, #7e2f50 0%, #df3232  51%, #7e2f50  100%)
+            text-transform: uppercase
+            text-align: center
+            color: white
+            font-size: 20px
+            font-weight: 700
+            font-family: 'Montserrat', sans-serif
+            background-size: 200% auto
+            transition: 0.5s
+            border-radius: 10px
+        .hyp-medicines:hover, .hyp-printday:hover, .hyp-gdziepolekweb:hover, .hyp-searchpatient:hover
+            background-position: right
+            color: #fff
+            text-decoration: none
+        button
+            border: none
+            background-color: transparent
+        button:focus
+            outline: 0
+        a:hover
+            text-decoration: none

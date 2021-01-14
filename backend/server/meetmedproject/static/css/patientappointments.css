@@ -1,0 +1,101 @@
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  padding-bottom: 60px;
+  text-transform: uppercase;
+  -webkit-transition: background-color .6s;
+  transition: background-color .6s;
+}
+
+nav a, nav i, nav .green-text {
+  color: #ffffff;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+}
+
+nav i {
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #dbdbdb;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav .cur {
+  color: #dbdbdb;
+}
+
+.bg-info {
+  background-color: transparent;
+  background: #22a39d;
+  background: -webkit-gradient(linear, left top, right top, from(#22a39d), color-stop(35%, #76e0d6), to(#168b82));
+  background: linear-gradient(90deg, #22a39d 0%, #76e0d6 35%, #168b82 100%);
+}
+
+.nav-link {
+  margin-right: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+  width: 90%;
+  margin: auto;
+}
+
+.wrapper h1 {
+  padding: 30px;
+  text-align: center;
+  color: #27bbb4;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper table {
+  counter-reset: row-num;
+}
+
+.wrapper table tbody tr {
+  counter-increment: row-num;
+}
+
+.wrapper table tbody th:first-child::before {
+  content: counter(row-num);
+}
+
+.wrapper table .index-row {
+  width: 150px;
+}
+
+.wrapper table .hour, .wrapper table .date {
+  width: 200px;
+}
+
+.wrapper table .doctor {
+  width: 280px;
+}
+
+.wrapper table .description {
+  width: 700px;
+}
+
+.wrapper table .done {
+  font-weight: 500;
+}
+
+.wrapper table .done .greentext {
+  color: #0a8f1c;
+}
+
+.wrapper table .done .yellowtext {
+  color: #e7aa02;
+}
+/*# sourceMappingURL=patientappointments.css.map */

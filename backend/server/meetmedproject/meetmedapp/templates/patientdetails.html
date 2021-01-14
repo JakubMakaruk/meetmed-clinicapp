@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MeetMet</title>
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/patientdetails.css' %}">
+        <script src="https://kit.fontawesome.com/922a5fe6ec.js" crossorigin="anonymous"></script>
+    </head>
+{% endblock %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg bg-info" id="navbar">
+        <a class="navbar-brand" href="/"><i class="fas fa-user-md"></i>MeetMed</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="{% url 'searchpatient' %}">POWRÓT</a>
+                <a href="{% url 'logout' %}"><button class="btn btn-light my-2 my-sm-0">Wyloguj się</button></a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="add">
+            <span>WSZYSTKIE WIZYTY PACJENTA - <span class="patient-text">{{ patient.first_name }} {{ patient.last_name }}</span></span>
+            <button class="btn btn-info" id="add-note" name="add-note" onclick="add_note()">Dodaj nową notatkę</button>
+            <hr>
+        </section>
+        <div id="popup-background"></div>
+        <div class="popup-add center">
+            <div class="title">
+                <p><i class="fas fa-calendar-plus"></i>Dodawanie notatki</p>
+            </div>
+            <hr>
+            <div class="description-add">
+                <form name="add-form" method="post">
+                    {% csrf_token %}
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="selectappointmentnote">
+                        <option selected>Wybierz wizytę, której dotyczy notatka</option>
+                        {% for appointment in all_appintments %} 
+                            <option value="{{ appointment.id }}">Wizyta: {{ appointment.id }} | Data: {{ appointment.start_date|date:'d.m  G:i'}} - {{ appointment.end_date|date:'G:i'}} | Pacjent: {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="form-group row">
+                        {{ form.appointment_note }}
+                    </div>
+                    <div class="buttons">
+                        <button type="button" id="close-add" onclick="close_popup(this, 'popup')">Zamknij</button>
+                        <button type="submit" class="button add-button" name ="button-add">Dodaj</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <section class="notes">
+            {% for note in appointments_notes %}
+                <div class="properties">
+                    <div class="header">
+                        <h2>{{ note.appointment.title }} </h2>
+                        <div class="buttons">
+                            <button type="submit" class="btn btn-success" id="appointmentnote:{{ note.id }}" onclick="edit_note(this.id, {{ note.id }})" name="button-edit">Edytuj</button>
+                            <button type="submit" class="btn btn-danger" id="appointmentnote:{{ note.id }}" onclick="deleteAppointmentNote(this.id)" name="button-delete">Usuń</button>
+                        </div>
+                    </div>
+                    <div class="details-note">
+                        <p><span class="date-hour-doctor">Data:</span> {{ note.appointment.end_date|date:'d.m.Y' }}</span></p>
+                        <p><span class="date-hour-doctor">Godzina:</span> {{ note.appointment.start_date|date:'H:i' }} - {{ note.appointment.end_date|date:'H:i' }}</p>
+                        <p><span class="date-hour-doctor">Doktor:</span> {{ note.appointment.doctor.first_name }} {{ note.appointment.doctor.last_name }}</p>
+                    </div>
+                </div>
+                <div class="full-note">
+                    <p>{{ note.note }}</p>
+                </div>
+                <div class="popup-edit center" id="popup-appointment-{{ note.id }}">
+                    <div class="title">
+                        <p><i class="fas fa-calendar-plus"></i>Edytowanie notatki</p>
+                    </div>
+                    <hr>
+                    <div class="description-edit">
+                        <form name="edit-form" method="post">
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                <textarea class="edit-textarea"name="edit-appointment_note" cols="40" rows="10" required="" id="id_appointment_note">{{ note.note }}</textarea>
+                            </div>
+                            <div class="buttons">
+                                <button type="button" id="close-edit" onclick="close_popup(this, {{ note.id }})">Zamknij</button>
+                                <button type="submit" class="button edit-button" name="{{ note.id }}">Zatwierdź</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+            {% empty %}
+                <p>BRAK</p>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}    
+{% block javascript %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min' %}"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+<script>
+    function add_note() {
+        document.getElementsByClassName("popup-add")[0].classList.add("active");
+        document.getElementById("popup-background").style.display = "block";
+    }
+    function edit_note(info, appid) {
+        document.getElementById("popup-appointment-" + appid).classList.add("active");
+        document.getElementById("popup-background").style.display = "block";
+    }
+    function close_popup(info, appid) {
+        document.getElementsByClassName("popup-add")[0].classList.remove("active");
+        if (appid != 'popup') {
+            document.getElementById("popup-appointment-" + appid).classList.remove("active");
+        }
+        document.getElementById("popup-background").style.display = "none";
+    }
+    function deleteAppointmentNote(id) {
+        id = id.replace(/[^0-9\.]+/g, "");
+        console.log(id)
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'details' pk=user.id %}",
+            data: {
+                csrfmiddlewaretoken: window.CSRF_TOKEN,
+                'deleteappointmentnote': id
+            },
+            success: function(data){
+                location.reload(true)
+            }
+        })
+    }
+</script>
+{% endblock %}
+

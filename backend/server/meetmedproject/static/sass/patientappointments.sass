@@ -1,0 +1,66 @@
+$greencolor: #27bbb4
+$graycolor: #dbdbdb
+
+*, *::after, *::before
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+nav
+    padding-bottom: 60px
+    text-transform: uppercase
+    transition: background-color .6s
+
+    a, i, .green-text
+        color: #ffffff
+        transition: color .4s
+    i
+        padding: 20px
+
+    a:hover
+        color: $graycolor
+
+    .navbar-brand
+        font-weight: bold
+        font-family: 'Montserrat', sans-serif
+    .cur
+        color: $graycolor
+.bg-info
+    background-color: transparent
+    background: rgb(34,163,157)
+    background: linear-gradient(90deg, rgba(34,163,157,1) 0%, rgba(118,224,214,1) 35%, rgba(22,139,130,1) 100%)
+
+.nav-link
+    margin-right: 30px
+    font-family: 'Poppins', sans-serif
+
+.wrapper
+    width: 90%
+    margin: auto
+    h1
+        padding: 30px
+        text-align: center
+        color: $greencolor
+        font-family: 'Montserrat', sans-serif
+    table
+        counter-reset: row-num
+        tbody
+            tr
+                counter-increment: row-num
+            th:first-child::before
+                content: counter(row-num)
+        td
+        .index-row
+            width: 150px
+        .hour, .date
+            width: 200px
+        .doctor
+            width: 280px
+        .description
+            width: 700px
+        .done
+            font-weight: 500
+            .greentext
+                color: #0a8f1c
+            .yellowtext
+                color: #e7aa02

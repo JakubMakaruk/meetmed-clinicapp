@@ -29,11 +29,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-link" href="doctorhome">Panel główny</a>
-                <a class="nav-link" href="doctortoday">Dzisiejszy dzień</a>
-                <a class="nav-link" href="doctorcalendar">Kalendarz</a>
-                <a class="nav-link" href="doctorpanel">Panel lekarza</a>
-                <a class="nav-link" href="doctoraccount">Ustawienia konta</a>
+                <a class="nav-link" href="userpanel">Panel główny</a>
+                {% load hasgroup %}
+                {% if request.user|has_group:"Doctor" %} 
+                    <a class="nav-link cur" href="doctortoday">Dzisiejszy dzień</a>
+                    <a class="nav-link" href="doctorcalendar">Kalendarz</a>
+                    <a class="nav-link" href="doctorpanel">Panel lekarza</a>
+                {% endif %}
+                <a class="nav-link" href="settings">Ustawienia konta</a>
                 <a href="{% url 'logout' %}"><button class="btn btn-light my-2 my-sm-0">Wyloguj się</button></a>
             </div>
         </div>
@@ -44,25 +47,38 @@
             <div class="header-date">
                 <p>DZISIAJ JEST <span class="today">{{ today }}</span></p>
             </div>
-            <div class="today-appointments">
-                {% if appointments %}
+            {% if appointments %}
+                <table class="table table-hover test">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="index-row">Numer</th>
+                            <th scope="col">Godzina</th>
+                            <th scope="col">Pacjent</th>
+                            <th scope="col">Właściwości</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {% for appointment in appointments %}
                         {% if user.username == appointment.doctor.username %}
-                                <button id="{{ appointment.id }}" type="button" class="btn {{ appointment.done }}" onclick="showProperties(this, {{ appointment.id }})">
-                                    <h1 class="appointment">{{ appointment.title }}</h1>
-                                    <p class="appointment description">Opis: Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit ullamcorper pulvinar. Vestibulum fermentum tortor id mi. Pellentesque ipsum. Nulla non arcu lacinia neque faucibus fringilla. Nulla non lectus sed nisl molestie malesuada. Proin in tellus sit amet nibh dignissim sagittis. Vivamus luctus egestas leo. Maecenas sollicitudin. Nullam{{ appointment.description }}</p>
-                                    <p class="appointment">Doktor: {{ appointment.doctor }}</p>
-                                    <p class="appointment">Pacjent: {% if appointment.patient != None %} {{ appointment.patient }} {% else %} Brak {% endif %}</p>
-                                    <p class="appointment">Data: {{ appointment.start_date|date:'d.m.Y' }}</p>
-                                    <p class="appointment">Godzina: {{ appointment.start_date|date:'H:i' }} - {{ appointment.end_date|date:'H:i' }}</p>
-                                </button>
-                                <i class="fas fa-arrow-right"></i>
+                            <tr class="{{ appointment.done }}">
+                                <th scope="row" class="index-row"></th>
+                                <td style="font-weight: 700;">{{ appointment.start_date|date:'H:i' }} - {{ appointment.end_date|date:'H:i' }}</td>
+                                <td>{% if appointment.patient != None %} {{ appointment.patient }} {% else %} Brak {% endif %}</td>
+                                <td>
+                                    <button id="{{ appointment.id }}" type="button" class="btn {% if appointment.done == '' %} btn-info {% else %} btn-light {% endif %} button-properties" onclick="showProperties(this, {{ appointment.id }})">
+                                        Podejrzyj wizytę
+                                    </button>
+                                </td>
+                            </tr>
                         {% endif %}
                     {% endfor %}
-                {% else %}
-                    <p class="empty">Nie masz zarejestrowanych wizyt na dzisiejszy dzień.</p>
-                {% endif %}
-            </div>
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty">Nie masz zarejestrowanych wizyt na dzisiejszy dzień.</p>
+            {% endif %}
+
+            
             <div class="properties">
                 {% for appointment in appointments %}
                     {% if user.username == appointment.doctor.username %}
@@ -72,20 +88,20 @@
                             </div>
                             <hr>
                             <div class="description-properties">                        
-                                <h1 class="appointment">{{ appointment.title }}</h1>
-                                <p class="appointment description">Opis: Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit ullamcorper pulvinar. Vestibulum fermentum tortor id mi. Pellentesque ipsum. Nulla non arcu lacinia neque faucibus fringilla. Nulla non lectus sed nisl molestie malesuada. Proin in tellus sit amet nibh dignissim sagittis. Vivamus luctus egestas leo. Maecenas sollicitudin. Nullam</p>
-                                <p class="appointment">Doktor: {{ appointment.doctor }}</p>
-                                <p class="appointment">Pacjent: {% if appointment.patient != None %} {{ appointment.patient }} {% else %} Brak {% endif %}</p>
-                                <p class="appointment">Data: {{ appointment.start_date|date:'d.m.Y' }}</p>
-                                <p class="appointment">Godzina: {{ appointment.start_date|date:'H:i' }} - {{ appointment.end_date|date:'H:i' }}</p>
-                                <div class="buttons">
-                                    <button class="close-properties" id="close-properties-{{ appointment.id }}" onclick="closeProperties(this, {{ appointment.id }})">Zamknij</button>
-                                    {% if appointment.done == 'btn-info' %}
-                                        <button type="submit" class="done-properties" id="button:{{ appointment.id }}" onclick="sendAppointmentDone(this.id)">Zrealizowano</button>
-                                    {% else %}
-                                        <button type="submit" class="done-properties" id="button:{{ appointment.id }}" onclick="sendAppointmentDone(this.id)">Odznacz</button>
-                                    {% endif %}
-                                </div>
+                                <h1>{{ appointment.title }}</h1>
+                                <p><span>Opis:</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta itaque vel laboriosam optio consectetur, perspiciatis maxime distinctio exercitationem unde magnam explicabo earum ratione a reprehenderit id illo vero esse. Ducimus eos aliquam laboriosam quisquam eveniet!</p>
+                                <p><span>Doktor:</span> {{ appointment.doctor }}</p>
+                                <p><span>Pacjent:</span> {% if appointment.patient != None %} {{ appointment.patient }} {% else %} Brak {% endif %}</p>
+                                <p><span>Data:</span> {{ appointment.start_date|date:'d.m.Y' }}</p>
+                                <p><span>Godzina:</span> {{ appointment.start_date|date:'H:i' }} - {{ appointment.end_date|date:'H:i' }}</p>
+                            </div>
+                            <div class="buttons">
+                                <button class="close-properties" id="close-properties-{{ appointment.id }}" onclick="closeProperties(this, {{ appointment.id }})">Zamknij</button>
+                                {% if appointment.done %}
+                                    <button type="submit" class="done-properties" id="button:{{ appointment.id }}" onclick="sendAppointmentDone(this.id)">Odznacz</button>
+                                {% else %}
+                                    <button type="submit" class="done-properties" id="button:{{ appointment.id }}" onclick="sendAppointmentDone(this.id)">Zrealizowano</button>
+                                {% endif %}
                             </div>
                         </div>
                     {% endif %}

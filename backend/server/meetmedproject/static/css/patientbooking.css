@@ -1,0 +1,111 @@
+*, *::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  padding-bottom: 60px;
+  text-transform: uppercase;
+  -webkit-transition: background-color .6s;
+  transition: background-color .6s;
+}
+
+nav a, nav i, nav .green-text {
+  color: #ffffff;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+}
+
+nav i {
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #dbdbdb;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav .cur {
+  color: #dbdbdb;
+}
+
+.bg-info {
+  background-color: transparent;
+  background: #22a39d;
+  background: -webkit-gradient(linear, left top, right top, from(#22a39d), color-stop(35%, #76e0d6), to(#168b82));
+  background: linear-gradient(90deg, #22a39d 0%, #76e0d6 35%, #168b82 100%);
+}
+
+.nav-link {
+  margin-right: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.search {
+  margin: 40px;
+}
+
+.search h3 {
+  margin-left: 40px;
+  font-weight: 700;
+  color: #27bbb4;
+  text-transform: uppercase;
+}
+
+.search hr {
+  width: 30%;
+}
+
+.search .fullhr {
+  width: 100%;
+}
+
+.search .form-group {
+  margin-top: 30px;
+}
+
+.search .form-group input {
+  width: 30%;
+}
+
+.search .form-group p {
+  margin: 10px;
+  font-weight: 700;
+}
+
+.results {
+  margin: 0 auto;
+  width: 95%;
+  display: table;
+}
+
+.results tr {
+  display: table;
+  width: 100%;
+}
+
+.results tr td, .results tr th {
+  display: table-cell;
+  width: 20%;
+  vertical-align: middle;
+}
+
+.results tr td button, .results tr th button {
+  width: 100%;
+}
+
+.results tr .index-row {
+  width: 10%;
+}
+
+.results tr p {
+  text-align: center;
+  margin-bottom: 0px;
+}
+/*# sourceMappingURL=patientbooking.css.map */

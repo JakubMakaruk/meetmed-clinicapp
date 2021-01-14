@@ -53,11 +53,11 @@
                         <h4>Nie posiadasz konta? <a href="register">Zarejestruj się!</a></h4>
 
                         {% for message in messages %}
-                            {% if message.message  == "Niepoprawne dane!" %}
+                            {% if message.tags  == "error" %}
                                 <div class="alert alert-danger" role="alert">
                                     {{ message }}
                                 </div>
-                            {% elif message.message == 'Utworzono konto!' %}
+                            {% elif message.tags == "success" %}
                                 <div class="alert alert-success" role="alert">
                                     {{ message }}
                                 </div>

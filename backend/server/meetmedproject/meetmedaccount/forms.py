@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from .models import Appointment
+from .models import AppointmentNote
 
 # NIE DZIAŁA
 # class CreateUserForm(UserCreationForm):
@@ -25,3 +26,6 @@ class AppointmentForm(ModelForm):
         super(AppointmentForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
+
+class AppointmentNoteForm(forms.Form):
+    appointment_note = forms.CharField(widget=forms.Textarea)

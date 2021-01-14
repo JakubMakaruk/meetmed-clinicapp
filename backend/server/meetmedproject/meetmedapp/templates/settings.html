@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MeetMet - Rejestracja</title>
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+        <script src="https://kit.fontawesome.com/922a5fe6ec.js" crossorigin="anonymous"></script>
+    </head>
+{% endblock %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg bg-info" id="navbar">
+        <a class="navbar-brand" href="/"><i class="fas fa-user-md"></i>MeetMed</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="userpanel">Panel główny</a>
+                {% load hasgroup %}
+                {% if request.user|has_group:"Doctor" %} 
+                    <a class="nav-link" href="doctortoday">Dzisiejszy dzień</a>
+                    <a class="nav-link" href="doctorcalendar">Kalendarz</a>
+                    <a class="nav-link" href="doctorpanel">Panel lekarza</a>
+                {% elif request.user|has_group:"Patient" %}
+                    <a class="nav-link" href="patientappointments">Moje wizyty</a>
+                    <a class="nav-link" href="booking">Zapisy na wizytę</a>
+                {% endif %}
+                <a class="nav-link cur" href="settings">Ustawienia konta</a>
+                <a href="{% url 'logout' %}"><button class="btn btn-light my-2 my-sm-0">Wyloguj się</button></a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div id="popup-properties-background"></div>
+        <div class="message-alert">
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <div class="alert alert-success alert-dismissible" id="alert-message1" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="setDefaultMargin()"><span aria-hidden="true">&times;</span></button>
+                        {{ message }}
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger alert-dismissible" id="alert-message2" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="setDefaultMargin()"><span aria-hidden="true">&times;</span></button>
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <section>
+            <div class="update-profile" id="update-section">
+                <div class="left">
+                    <form action="settings" method="post">
+                        {% csrf_token %}
+                        <div class="field">
+                            <p>Imię: </p>
+                            <input type="text" name="first_name" value="{{ user.first_name }}">
+                        </div>
+                        <div class="field">
+                            <p>Nazwisko: </p>
+                            <input type="text" name="last_name" value="{{ user.last_name }}">
+                        </div>
+                        <div class="field">
+                            <p>Hasło: </p>
+                            <a id="update-password-field" href="#">Zmień hasło do logowania</a>
+                        </div>
+                        <div class="field">
+                            <p>Telefon: </p>
+                            <input type="text" name="phone" value="{{ user_phone }}" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                        </div>
+                        <div class="field">
+                            <p>E-mail: </p>
+                            <input type="text" name="username" value="{{ user.username }}">
+                        </div>
+                        <button class="btn-info button-change" id="submit" name ="update-personal-data">Zaktualizuj dane</button>
+                    </form>
+                </div>
+                <div class="right">
+                    <h2>POMOC</h2>
+                    <p>W razie jakichkolwiek problemów prosimy kontaktować się z naszym serwisem dostępnym pod poniższym numerem telefonu w godzinach 10-16.</p>
+                    <h5>(+48) 123 456 789</h5>
+                    <img src="{% static 'img/settings/support.svg' %}">
+                </div>
+            </div>
+        </section>
+
+        <div class="popup-settings center" id="popup-update-password">
+            <div class="title">
+                <p><i class="fas fa-calendar-alt"></i>Zmiana hasła</p>
+            </div>
+            <hr>
+            <form action="settings" method="post">
+                {% csrf_token %}
+                <div class="description-properties">        
+                    <div class="field">
+                        <p>Stare hasło: </p>
+                        <input type="password" name="oldpassword">
+                    </div>
+                    <div class="field">
+                        <p>Nowe hasło: </p>
+                        <input type="password" name="newpassword1">
+                    </div>
+                    <div class="field">
+                        <p>Powtórz nowe hasło: </p>
+                        <input type="password" name="newpassword2">
+                    </div>
+                    
+                </div>
+                <div class="buttons">
+                    <button class="close-popup" onclick="closePasswordUpdater()">Zamknij</button>
+                    <button type="submit" class="apply-popup" name ="update-password">Zatwierdź</button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}    
+{% block javascript %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min' %}"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script src="{% static 'slick/slick.min.js' %}"></script>
+<script src="{% static 'js/doctortoday.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+    <script>
+        $('#update-password-field').click(function(){ showPasswordUpdater(); return false; });
+
+        function showPasswordUpdater() {
+            document.getElementById("popup-update-password").classList.add("active");
+            document.getElementById("popup-properties-background").style.display = "block";
+        };
+        function closePasswordUpdater() {
+            document.getElementById("popup-update-password").classList.remove("active");
+            document.getElementById("popup-properties-background").style.display = "none";
+        };
+
+        function sendNewPassword() {
+            const oldpassword = document.getElementById("input-oldpassword").value;
+            const newpassword1 = document.getElementById("input-newpassword1").value;
+            const newpassword2 = document.getElementById("input-newpassword2").value;
+            console.log(oldpassword, newpassword1, newpassword2);
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'settings' %}",
+                data: {
+                    csrfmiddlewaretoken: window.CSRF_TOKEN,
+                    'oldpassword': oldpassword,
+                    'newpassword1': newpassword1,
+                    'newpassword2': newpassword2
+                },
+                success: function(data){
+                    alert(data)
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            if (document.getElementById('alert-message1') || document.getElementById('alert-message2')) {
+                document.getElementById("update-section").style.margin = "15px";
+            }
+            else {
+                document.getElementById("update-section").style.margin = "50px";
+            }
+        });
+
+        function setDefaultMargin() {
+            document.getElementById("update-section").style.margin = "50px";
+        }
+
+    </script>
+{% endblock %}
+

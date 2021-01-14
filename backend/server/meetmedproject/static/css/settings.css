@@ -1,0 +1,294 @@
+body {
+  background-color: #f1f1f1;
+}
+
+nav {
+  padding-bottom: 60px;
+  text-transform: uppercase;
+  -webkit-transition: background-color .6s;
+  transition: background-color .6s;
+}
+
+nav a, nav i {
+  color: #ffffff;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+}
+
+nav i {
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #dbdbdb;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav .cur {
+  color: #dbdbdb;
+}
+
+.bg-info {
+  background-color: transparent;
+  background: #22a39d;
+  background: -webkit-gradient(linear, left top, right top, from(#22a39d), color-stop(35%, #76e0d6), to(#168b82));
+  background: linear-gradient(90deg, #22a39d 0%, #76e0d6 35%, #168b82 100%);
+}
+
+.nav-link {
+  margin-right: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+section .update-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 8%;
+  background-color: #ffffff;
+  width: 1200px;
+  padding: 30px;
+  border-radius: 50px;
+}
+
+section .update-profile .left {
+  width: 50%;
+}
+
+section .update-profile .left p {
+  font-weight: 700;
+}
+
+section .update-profile .left input {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  background-color: #f6fdfa;
+  -webkit-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+section .update-profile .left a {
+  color: #27bbb4;
+}
+
+section .update-profile .left form {
+  width: 100%;
+}
+
+section .update-profile .left .field {
+  width: 100%;
+  padding: 20px;
+}
+
+section .update-profile .left .button-change {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: 0;
+  padding: 15px 40px;
+  border-radius: 10px;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+section .update-profile .right {
+  position: relative;
+  width: 40%;
+}
+
+section .update-profile .right h2 {
+  font-weight: 700;
+  color: #27bbb4;
+  margin-top: 30px;
+  text-align: center;
+}
+
+section .update-profile .right p {
+  margin-top: 20px;
+}
+
+section .update-profile .right h5 {
+  text-align: center;
+}
+
+section .update-profile .right img {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0px 30px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.popup-settings {
+  width: 600px;
+  height: 540px;
+  padding: 30px 20px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 2;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 33px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 33px 2px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  top: -200%;
+  -webkit-transform: translate(-50%, -50%) scale(0.5);
+          transform: translate(-50%, -50%) scale(0.5);
+  -webkit-transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, -webkit-transform 1000ms ease-in-out;
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, -webkit-transform 1000ms ease-in-out;
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out;
+  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out, -webkit-transform 1000ms ease-in-out;
+}
+
+.popup-settings div {
+  position: relative;
+  top: 10px;
+  opacity: 0;
+}
+
+.popup-settings.active {
+  opacity: 1;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+  -webkit-transition: -webkit-transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  transition: -webkit-transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  transition: transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+  transition: transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19), -webkit-transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+
+.popup-settings.active .fa-calendar-alt {
+  font-size: 30px;
+  color: #18c5c5;
+}
+
+.popup-settings.active .title {
+  text-align: left;
+  font-size: 25px;
+  font-weight: 700;
+  -webkit-transition: all 300ms ease-in out 250ms;
+  transition: all 300ms ease-in out 250ms;
+}
+
+.popup-settings.active .title i {
+  padding: 0px 20px 0px 10px;
+}
+
+.popup-settings.active hr {
+  margin-bottom: 0px !important;
+}
+
+.popup-settings.active .field {
+  margin: 20px;
+}
+
+.popup-settings.active .field input {
+  width: 40%;
+  padding: 10px;
+  border: 0;
+  background-color: #f6fdfa;
+  -webkit-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.popup-settings.active .field p {
+  font-weight: 700;
+}
+
+.popup-settings.active .buttons {
+  -webkit-transition: all 300ms ease-in out 350ms;
+  transition: all 300ms ease-in out 350ms;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.popup-settings.active .buttons button {
+  margin: 0px 20px;
+  height: 50px;
+  width: 140px;
+  background: #111111;
+  color: #f5f5f5;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+.popup-settings.active .buttons .close-popup {
+  background: #bd0f0f;
+}
+
+.popup-settings.active .buttons .apply-popup {
+  background: #00ca5b;
+}
+
+.popup-settings.active .buttons .close-popup:hover {
+  background: #690303;
+}
+
+.popup-settings.active .buttons .apply-popup:hover {
+  background: #01813b;
+}
+
+.popup-settings.active div {
+  top: 0px;
+  opacity: 1;
+}
+
+#popup-properties-background {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.message-alert .alert {
+  margin: 15px 15px 15px;
+  margin-bottom: 0px;
+}
+/*# sourceMappingURL=settings.css.map */

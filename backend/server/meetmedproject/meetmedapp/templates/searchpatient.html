@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MeetMet</title>
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/searchpatient.css' %}">
+        <script src="https://kit.fontawesome.com/922a5fe6ec.js" crossorigin="anonymous"></script>
+    </head>
+{% endblock %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg bg-info" id="navbar">
+        <a class="navbar-brand" href="/"><i class="fas fa-user-md"></i>MeetMed</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="{% url 'doctorpanel' %}">POWRÓT DO PANELU</a>
+                <a href="{% url 'logout' %}"><button class="btn btn-light my-2 my-sm-0">Wyloguj się</button></a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="search">
+            <h3>Wyszukiwarka pacjentów</h3>
+            <hr>
+            <form method="get">
+                <div class="form-group">
+                    <p>Imię:</p>
+                    {% render_field filter.form.first_name class="form-control" %}
+                    </div>
+                <div class="form-group">
+                    <p>Nazwisko:</p>
+                    {% render_field filter.form.last_name class="form-control" %}
+                </div>
+                <button type="submit" class="btn btn-info">Wyszukaj</button>
+            </form>
+            <hr class="fullhr">
+        </section>
+        
+        <section class="results">
+            {% if filter.qs %}
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>E-mail</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for user in filter.qs %}
+                    <tr>
+                        <td><p>{{ user.first_name }}</p></td>
+                        <td><p>{{ user.last_name }}</p></td>
+                        <td><p>{{ user.username }}</p></td>
+                        <td><a href="{% url 'details' pk=user.id %}"><button class="btn btn-info">Historia pacjenta</button></a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <p style="text-align: center;">Nie ma takiego pacjenta w bazie danych.</p>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}    
+{% block javascript %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min' %}"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+{% endblock %}
+

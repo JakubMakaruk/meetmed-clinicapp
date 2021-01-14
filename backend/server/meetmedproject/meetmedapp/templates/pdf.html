@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/922a5fe6ec.js" crossorigin="anonymous"></script>
+
+        <style type="text/css">
+            @media print {
+                @font-face {
+                    font-family: Example, "Example Font";
+                    src: url(arial.ttf);
+                }
+            }
+            body {
+                font-family: 'Open Sans', sans-serif;
+            }
+            .logo {
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            .logo h1 {
+                font-family: 'sans';
+                font-weight: 700;
+                color: #27bbb4;
+                font-size: 45px;
+            }
+
+            .user-plan {
+                margin: 50px 0px 100px 0px;
+                text-align: center;
+                font-size: 25px;
+                color: #4d4d4d;
+            }
+            
+            .user-plan span {
+                font-size: 30px;
+                font-weight: 700;
+            }
+
+            #upp {
+                color: #4d4d4d;
+                font-size: 16px
+            }
+
+            .hour {
+                color: #27bbb4;
+                font-weight: 700;
+            }
+
+            .patient {
+                font-weight: 700;
+            }
+
+            #upp p {
+                margin: 5px;
+                font-family: Calibri;
+            }
+
+            hr {
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            
+
+            #upp {
+                width: 100%;
+                /*background:red;*/
+            }
+                .alignleft,
+                .alignright {
+                display: inline-block;
+                background: red;
+            }
+                .alignleft {
+                padding-left: 100px;
+            }
+                .alignright {
+                padding-right: 100px;
+            }
+
+            
+        </style>
+    </head>
+
+    <body>
+        <section class="logo">
+            <img src="https://i.ibb.co/swypHJn/logo.png" height="80px" width="70px">
+            <h1>MEETMED</h1>
+        </section>
+        <section class="user-plan">
+            <p>Plan dnia - <span>{{ user }}</span></p>
+            <p>{{ date }}</p>
+        </section>
+        <table id="upp">
+            {% if appointments %}
+                {% for appointment in appointments %}
+                <tr style="margin-top: 20px;">
+                    <td>
+                        <p class="alignleft"><span class="hour">{{ appointment.start_date|date:'H:i' }} - {{ appointment.end_date|date:'H:i' }}</span></p>
+                        </br>
+                        <p class="alignleft">Pacjent: <span class="patient">{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</span></p>
+                        </br>
+                    </td>
+                    <td></td>
+                    <td align="right">
+                        <p class="alignright"><img src="https://i.ibb.co/8MrTxPf/aaaa.png" height="30px" width="30px" style="text-align: right;"></p>
+                    </td>
+                </tr>
+                <tr style="margin-bottom: 20px; padding-bottom: 20px;">
+                    <td><hr></td>
+                    <td><hr></td>
+                    <td><hr></td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <p style="text-align: center; font-size: 16px;">Nie masz na dzisiaj zarezerwowanych wizyt.</p>
+            {% endif %}
+        </table>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</html>

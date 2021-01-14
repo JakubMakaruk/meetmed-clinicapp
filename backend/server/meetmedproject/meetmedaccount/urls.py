@@ -9,9 +9,16 @@ urlpatterns = [
     path('userhome', views.userhome, name="userhome"),
     path('logout', views.logout, name="logout"),
 
-    path('doctorhome', views.doctorhome, name="doctorhome"),
+    path('userpanel', views.userpanel, name="userpanel"),
     path('doctortoday', views.doctortoday, name="doctortoday"),
     path('doctorcalendar', views.doctorcalendar, name="doctorcalendar"),
-    path('doctorpanel', views.doctorpanel, name="doctormedpanel"),
-    path('doctoraccount', views.doctoraccount, name="doctoraccount"),
+    path('doctorpanel', views.doctorpanel, name="doctorpanel"),
+    path('render_pdf_view', views.render_pdf_view, name="render_pdf_view"),
+    
+    path('patientappointments', views.patientappointments, name='patientappointments'),
+    path('booking', views.booking, name="booking"),
+
+    url(r'^searchpatient/$', views.searchpatient, name='searchpatient'),
+    path('settings', views.settings, name="settings"),
+    path('details/<int:pk>', views.details, name='details')
 ]

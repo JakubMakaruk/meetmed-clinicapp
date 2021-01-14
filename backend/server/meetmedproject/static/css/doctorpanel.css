@@ -6,7 +6,7 @@
 }
 
 html, body {
-  height: 100%;
+  height: 100vh;
 }
 
 nav {
@@ -35,7 +35,7 @@ nav .navbar-brand {
   font-family: 'Montserrat', sans-serif;
 }
 
-nav .active {
+nav .cur {
   color: #dbdbdb;
 }
 
@@ -141,8 +141,8 @@ nav .active {
 }
 
 #statistics .wrapper .total-today-appointments {
-  background-image: -webkit-gradient(linear, left top, right top, from(#76b852), color-stop(51%, #8DC26F), to(#76b852));
-  background-image: linear-gradient(to right, #76b852 0%, #8DC26F 51%, #76b852 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#02AAB0), color-stop(51%, #749bbf), to(#749bbf));
+  background-image: linear-gradient(to right, #02AAB0 0%, #749bbf 51%, #749bbf 100%);
   background-size: 200% auto;
   color: white;
   border-radius: 5px;
@@ -157,16 +157,16 @@ nav .active {
 }
 
 #statistics .wrapper .total-patients {
-  background-image: -webkit-gradient(linear, left top, right top, from(#FFB75E), color-stop(51%, #ED8F03), to(#FFB75E));
-  background-image: linear-gradient(to right, #FFB75E 0%, #ED8F03 51%, #FFB75E 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#185a9d), color-stop(51%, #43cea2), to(#43cea2));
+  background-image: linear-gradient(to right, #185a9d 0%, #43cea2 51%, #43cea2 100%);
   background-size: 200% auto;
   color: white;
   border-radius: 5px;
 }
 
 #statistics .wrapper .total-work-hours {
-  background-image: -webkit-gradient(linear, left top, right top, from(#603813), color-stop(51%, #816250), to(#603813));
-  background-image: linear-gradient(to right, #603813 0%, #816250 51%, #603813 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#00CDAC), color-stop(51%, #02AAB0), to(#02AAB0));
+  background-image: linear-gradient(to right, #00CDAC 0%, #02AAB0 51%, #02AAB0 100%);
   background-size: 200% auto;
   color: white;
   border-radius: 5px;
@@ -174,5 +174,137 @@ nav .active {
 
 #statistics .wrapper .total-work-hours p {
   font-size: 14px;
+}
+
+#chart-hyperlinks {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 120px;
+}
+
+#chart-hyperlinks .chart-container {
+  text-align: center;
+  position: relative;
+  height: 55vh;
+  width: 55vw;
+}
+
+#chart-hyperlinks .chart-container p {
+  margin: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #219993;
+}
+
+#chart-hyperlinks #chart {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+#chart-hyperlinks .right-panel .rectangle {
+  margin-top: 40px;
+  width: 320px;
+  height: 100px;
+  -webkit-box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.67);
+  box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.67);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#chart-hyperlinks .right-panel .hyp-medicines {
+  background-image: -webkit-gradient(linear, left top, right top, from(#50C9C3), color-stop(51%, #96DEDA), to(#50C9C3));
+  background-image: linear-gradient(to right, #50C9C3 0%, #96DEDA 51%, #50C9C3 100%);
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  background-size: 200% auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+#chart-hyperlinks .right-panel .hyp-printday {
+  background-image: -webkit-gradient(linear, left top, right top, from(#00c6ff), color-stop(51%, #0072ff), to(#00c6ff));
+  background-image: linear-gradient(to right, #00c6ff 0%, #0072ff 51%, #00c6ff 100%);
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  background-size: 200% auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+#chart-hyperlinks .right-panel .hyp-gdziepolekweb {
+  background-image: -webkit-gradient(linear, left top, right top, from(#1D976C), color-stop(51%, #93F9B9), to(#1D976C));
+  background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 51%, #1D976C 100%);
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  background-size: 200% auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+#chart-hyperlinks .right-panel .hyp-searchpatient {
+  background-image: -webkit-gradient(linear, left top, right top, from(#7e2f50), color-stop(51%, #df3232), to(#7e2f50));
+  background-image: linear-gradient(to right, #7e2f50 0%, #df3232 51%, #7e2f50 100%);
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  background-size: 200% auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+#chart-hyperlinks .right-panel .hyp-medicines:hover, #chart-hyperlinks .right-panel .hyp-printday:hover, #chart-hyperlinks .right-panel .hyp-gdziepolekweb:hover, #chart-hyperlinks .right-panel .hyp-searchpatient:hover {
+  background-position: right;
+  color: #fff;
+  text-decoration: none;
+}
+
+#chart-hyperlinks .right-panel button {
+  border: none;
+  background-color: transparent;
+}
+
+#chart-hyperlinks .right-panel button:focus {
+  outline: 0;
+}
+
+#chart-hyperlinks .right-panel a:hover {
+  text-decoration: none;
 }
 /*# sourceMappingURL=doctorpanel.css.map */

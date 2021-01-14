@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block head %}
+    <title>{% block title %}MeetMed{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/922a5fe6ec.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/patientbooking.css' %}">
+{% endblock %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg bg-info" id="navbar">
+        <a class="navbar-brand" href="/"><i class="fas fa-user-md"></i>MeetMed</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="userpanel">Panel główny</a>
+                <a class="nav-link" href="patientappointments">Moje wizyty</a>
+                <a class="nav-link cur" href="booking">Zapisy na wizytę</a>
+                <a class="nav-link" href="settings">Ustawienia konta</a>
+                <a href="{% url 'logout' %}"><button class="btn btn-light my-2 my-sm-0">Wyloguj się</button></a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="search">
+            <h3>PODAJ IMIĘ I NAZWISKO LEKARZA</h3>
+            <hr>
+            <form method="get">
+                <div class="form-group">
+                    <p>Imię:</p>
+                    {% render_field filter.form.first_name class="form-control" %}
+                    </div>
+                <div class="form-group">
+                    <p>Nazwisko:</p>
+                    {% render_field filter.form.last_name class="form-control" %}
+                </div>
+                <button type="submit" class="btn btn-info">Wyszukaj</button>
+            </form>
+            <hr class="fullhr">
+        </section>
+        
+        <section class="results">
+            {% if filter.qs %}
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in filter.qs %}
+                        <tr>
+                            <td><p>{{ user.first_name }}</p></td>
+                            <td><p>{{ user.last_name }}</p></td>
+                            <td><p>{{ user.username }}</p></td>
+                            <td><a href="{% url 'details' pk=user.id %}"><button class="btn btn-info">Pokaż dostępne wizyty</button></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p style="text-align: center;">Taki lekarz nie przyjmuje w naszej przychodni.</p>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+    
+    <!-- ANIMATE.CSS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="{% static 'js/animation.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min' %}"></script>
+
+    <script src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/doctortoday.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
+    <script>
+        function showProperties(info, appid) {
+            document.getElementById("popup-appointment-" + appid).classList.add("active");
+            document.getElementById("popup-properties-background").style.display = "block";
+            let appointment = document.getElementsByClassName("appointment");
+
+            console.log(info.id);
+        };
+        function closeProperties(info, appid) {
+            document.getElementById("popup-appointment-" + appid).classList.remove("active");
+            document.getElementById("popup-properties-background").style.display = "none";
+        };
+
+        function sendAppointmentDone(id) {
+            console.log("buttonid: ", id);
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'doctortoday' %}",
+                data: {
+                    csrfmiddlewaretoken: window.CSRF_TOKEN,
+                    'id': id
+                },
+                success: function(data){
+                    location.reload(true)
+                }
+            })
+        }
+    </script>
+{% endblock %}

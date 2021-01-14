@@ -1,0 +1,193 @@
+$greencolor: #27bbb4
+$graycolor: #dbdbdb
+
+body
+    background-color: #f1f1f1
+nav
+    padding-bottom: 60px
+    text-transform: uppercase
+    transition: background-color .6s
+
+    a, i
+        color: #ffffff
+        transition: color .4s
+    i
+        padding: 20px
+
+    a:hover
+        color: $graycolor
+
+    .navbar-brand
+        font-weight: bold
+        font-family: 'Montserrat', sans-serif
+    .cur
+        color: $graycolor
+.bg-info
+    background-color: transparent
+    background: rgb(34,163,157)
+    background: linear-gradient(90deg, rgba(34,163,157,1) 0%, rgba(118,224,214,1) 35%, rgba(22,139,130,1) 100%)
+
+.nav-link
+    margin-right: 30px
+    font-family: 'Poppins', sans-serif
+
+.add
+    width: 90%
+    margin: auto
+    margin-top: 30px
+    position: relative
+    span
+        font-size: 30px
+        font-family: 'Montserrat', sans-serif
+        .patient-text
+            color: $greencolor
+            font-weight: 700
+            text-transform: uppercase
+    button
+        position: absolute
+        top: 0
+        right: 0
+
+.center
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+// POPUP ADD APOINTMENT -------------------------------
+.popup-add, .popup-edit
+    width: 900px
+    height: 600px
+    padding: 30px 20px
+    border-radius: 10px
+    background: #f5f5f5
+    box-sizing: border-box
+    z-index: 2
+    text-align: center
+
+    -webkit-box-shadow: 0px 0px 33px 2px rgba(0,0,0,0.6)
+    -moz-box-shadow: 0px 0px 33px 2px rgba(0,0,0,0.6)
+    box-shadow: 0px 0px 33px 2px rgba(0,0,0,0.6)
+
+    opacity: 0
+    top: -200%
+    transform: translate(-50%,-50%) scale(0.5)
+    transition: opacity 300ms ease-in-out, top 1000ms ease-in-out, transform 1000ms ease-in-out
+
+    div
+        position: relative
+        top: 10px
+        opacity: 0
+
+.popup-add.active, .popup-edit.active
+    opacity: 1
+    top: 50%
+    transform: translate(-50%, -50%) scale(1)
+    transition: transform 600ms cubic-bezier(0.18, 0.89, 0.43, 1.19)
+
+    .fa-calendar-plus
+        font-size: 30px
+        color: #18c58b
+    .title
+        text-align: left
+        font-size: 25px
+        font-weight: 700
+        transition: all 300ms ease-in out 250ms
+        i
+            padding: 0px 20px 0px 10px
+    select
+        margin: auto
+        margin-top: 5px
+        margin-bottom: 25px
+        width: 80%
+
+    textarea
+        margin: auto
+        text-align: left
+        width: 90%
+        height: 100%
+        resize: none
+        display: inline-block
+        padding: 10px 10px
+        line-height: 30px
+        border: 0
+        border-radius: 5px
+        background-color: #ffffff
+        box-shadow: 0 0 10px 2px rgba(0,0,0,0.2)
+    .edit-textarea
+        line-height: 37px
+    .buttons
+        transition: all 300ms ease-in out 350ms
+        margin-top: 30px
+        button
+            margin: 0px 20px
+            height: 50px
+            width: 140px
+            background: #111111
+            color: #f5f5f5
+            border: none
+            font-size: 16px
+            font-weight: 600
+            outline: none
+            border-radius: 10px
+            cursor: pointer
+            transition: all 300ms ease-in-out
+        #close-add, #close-edit
+            background: #bd0f0f
+        .add-button, .edit-button
+            background: #00ca5b
+
+    .buttons
+        #close-add:hover, #close-edit:hover
+            background: #690303
+        .add-button:hover, .edit-button:hover
+            background: #01813b
+    div
+        top: 0px
+        opacity: 1
+#popup-background
+    position: fixed
+    display: none
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: rgba(0,0,0,0.5)
+    z-index: 1
+
+.notes
+    width: 90%
+    margin: auto
+    margin-top: 40px
+    .title
+        .hours
+            font-size: 1.5rem
+            .date
+                font-size: 35px
+                color: $greencolor
+    .properties
+        margin-top: 20px
+        .header
+            display: flex
+        h2
+            margin-bottom: 20px
+        p
+            margin: 5px
+            font-size: 17px
+            .date-hour-doctor
+                color: $greencolor
+                font-weight: 700
+        .buttons
+            margin-top: 10px
+            margin-left: auto
+            button
+                margin-left: 10px
+        //     position: absolute
+        //     top: 0
+        //     right: 0
+        //     display: inline-block
+
+    .full-note
+        margin-top: 20px
