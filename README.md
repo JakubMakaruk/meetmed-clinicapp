@@ -24,36 +24,56 @@ Projekt zaliczeniowy z przedmiotu "Medyczne Systemy Informacyjne", w którym stw
 ## Zdjęcia podglądowe
 #### Strona główna
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/homepage.gif">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/homepage.gif">
+  </kbd>
 </p>
 
 #### Panel logowania oraz rejestracji
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/loginpanel.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/loginpanel.png">
+  </kbd>
 </p>
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/registerpanel.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/registerpanel.png">
+  </kbd>
 </p>
 
 #### Konto lekarza
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctorhome.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctorhome.png">
+  </kbd>
 </p>
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctortoday.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctortoday.png">
+  </kbd>
 </p>
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctorcalendar.gif">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctorcalendar.gif">
+  </kbd>
 </p>
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctorpanel.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/doctorpanel.png">
+  </kbd>
 </p>
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/searchpatient.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/searchpatient.png">
+  </kbd>
 </p>
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/patientnotes.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/patientnotes.png">
+  </kbd>
 </p>
 <p align="center">
- <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/settings.png">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/settings.png">
+  </kbd>
 </p>
