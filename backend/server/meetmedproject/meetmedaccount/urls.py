@@ -17,6 +17,7 @@ urlpatterns = [
     
     path('patientappointments', views.patientappointments, name='patientappointments'),
     path('booking', views.booking, name="booking"),
+    path('doctor/<int:pk>', views.doctorappointments, name='doctor'),
 
     url(r'^searchpatient/$', views.searchpatient, name='searchpatient'),
     path('settings', views.settings, name="settings"),

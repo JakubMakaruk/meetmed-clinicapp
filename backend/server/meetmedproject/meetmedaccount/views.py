@@ -30,6 +30,9 @@ from .filters import UserFilter
 
 from django.views.generic import DetailView
 
+from django.utils import translation
+from django.utils.formats import date_format
+
 
 @unauthenticated_user
 def login(request):
@@ -425,3 +428,26 @@ def booking(request):
         'filter': user_filter
     }
     return render(request, 'patientbooking.html', context)
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Patient'])
+def doctorappointments(request, pk):
+    inf_date = datetime.date(3000, 1, 1)
+
+    two_weeks = []
+    for i in range(15):
+        translation.activate('pl')
+        two_weeks.append((datetime.date.today() + datetime.timedelta(days=i)))
+        
+
+    today = datetime.date.today()
+    doctor = User.objects.get(id=pk)
+    all_appointments = Appointment.objects.filter(doctor=doctor, start_date__range=(today, inf_date)).order_by('start_date')
+
+
+        
+    context = {
+        'appointments': all_appointments,
+        'weeks': two_weeks,
+    }
+    return render(request, 'doctorappointments.html', context)

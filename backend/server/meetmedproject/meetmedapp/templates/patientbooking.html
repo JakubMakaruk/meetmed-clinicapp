@@ -3,8 +3,6 @@
 {% load widget_tweaks %}
 
 {% block head %}
-    <title>{% block title %}MeetMed{% endblock %}</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -65,7 +63,7 @@
                             <td><p>{{ user.first_name }}</p></td>
                             <td><p>{{ user.last_name }}</p></td>
                             <td><p>{{ user.username }}</p></td>
-                            <td><a href="{% url 'details' pk=user.id %}"><button class="btn btn-info">Pokaż dostępne wizyty</button></a></td>
+                            <td><a href="{% url 'doctor' pk=user.id %}"><button class="btn btn-info">Pokaż dostępne wizyty</button></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

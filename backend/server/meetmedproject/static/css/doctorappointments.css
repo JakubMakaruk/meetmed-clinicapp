@@ -1,0 +1,46 @@
+body {
+  background-color: #ffffff;
+}
+
+nav {
+  padding-bottom: 60px;
+  text-transform: uppercase;
+  -webkit-transition: background-color .6s;
+  transition: background-color .6s;
+}
+
+nav a, nav i {
+  color: #ffffff;
+  -webkit-transition: color .4s;
+  transition: color .4s;
+}
+
+nav i {
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #dbdbdb;
+}
+
+nav .navbar-brand {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+nav .cur {
+  color: #dbdbdb;
+}
+
+.bg-info {
+  background-color: transparent;
+  background: #22a39d;
+  background: -webkit-gradient(linear, left top, right top, from(#22a39d), color-stop(35%, #76e0d6), to(#168b82));
+  background: linear-gradient(90deg, #22a39d 0%, #76e0d6 35%, #168b82 100%);
+}
+
+.nav-link {
+  margin-right: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+/*# sourceMappingURL=doctorappointments.css.map */
