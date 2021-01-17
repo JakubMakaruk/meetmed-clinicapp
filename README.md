@@ -10,7 +10,7 @@ Projekt zaliczeniowy z przedmiotu "Medyczne Systemy Informacyjne", w którym stw
 - strona widoczna tylko dla gości
 - panel rejestracji oraz logowania z walidacją danych
 #### Lekarz
-- możliwość korzystania z kalendarza w trybie widokowym dzień/tydzień/miesiąc (FullCallendar API)
+- możliwość korzystania z kalendarza w trybie widokowym dzień/tydzień/miesiąc (FullCalendar API)
 - dodawanie/usuwanie wizyt
 - zaznaczanie wizyt jako zrealizowane/niezrealizowane
 - podgląd statystyk (ilość wizyt w danym tygodniu, łączna ilość wizyt, łączna ilość pacjentów, ilość przepracowanego czasu)
