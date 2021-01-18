@@ -449,5 +449,6 @@ def doctorappointments(request, pk):
     context = {
         'appointments': all_appointments,
         'weeks': two_weeks,
+        'doctor': doctor
     }
     return render(request, 'doctorappointments.html', context)

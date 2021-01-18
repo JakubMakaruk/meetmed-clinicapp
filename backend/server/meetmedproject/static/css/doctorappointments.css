@@ -43,4 +43,36 @@ nav .cur {
   margin-right: 30px;
   font-family: 'Poppins', sans-serif;
 }
+
+main h2 {
+  margin-top: 35px;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+main h2 .green-text {
+  color: #27bbb4;
+}
+
+.days-carousel {
+  width: 90%;
+  margin: auto;
+}
+
+.days-carousel .day {
+  height: 700px;
+  padding: 25px;
+  margin: 30px 30px 0px;
+  background-color: #f1f1f1;
+  border-radius: 30px;
+}
+
+.days-carousel .day .date {
+  text-align: center;
+}
+
+.days-carousel .slick-prev:before, .days-carousel .slick-next:before {
+  color: #424242;
+}
 /*# sourceMappingURL=doctorappointments.css.map */
