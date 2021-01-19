@@ -83,3 +83,20 @@ Projekt zaliczeniowy z przedmiotu "Medyczne Systemy Informacyjne", w którym stw
     <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/settings.png">
   </kbd>
 </p>
+
+#### Konto pacjenta
+<p align="center">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/patientappointment.png">
+  </kbd>
+</p>
+<p align="center">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/patientsearch.png">
+  </kbd>
+</p>
+<p align="center">
+  <kbd>
+    <img src="https://github.com/JakubMakaruk/meetmed-clinicapp/blob/main/readmeimgs/patientbooking.png">
+  </kbd>
+</p>
