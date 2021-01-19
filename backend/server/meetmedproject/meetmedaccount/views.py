@@ -415,6 +415,19 @@ def details(request, pk):
 def patientappointments(request):
     my_appointments = Appointment.objects.filter(patient=request.user).order_by('start_date')
 
+    for i in my_appointments:
+        if datetime.datetime.combine(datetime.date.today(), datetime.time(0, 0)) > datetime.datetime.combine(i.end_date, datetime.time(0, 0)):
+            i.done = 'btn-done'
+            i.save()
+
+    if request.is_ajax and request.method=='POST':
+        print(request.POST['cancelAppointmentId'])
+        cancelAppointment = Appointment.objects.get(id=request.POST['cancelAppointmentId'])
+        cancelAppointment.patient = None
+        cancelAppointment.save()
+        messages.success(request, "Pomyślnie anulowano wizytę!")
+        return redirect('patientappointments')
+
     context = {
         'appointments': my_appointments,
     }
@@ -432,23 +445,41 @@ def booking(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Patient'])
 def doctorappointments(request, pk):
+    user_phone = UserProfile.objects.get(user=request.user).phone
+    print("USERPHONE = ", user_phone)
     inf_date = datetime.date(3000, 1, 1)
 
     two_weeks = []
     for i in range(15):
         translation.activate('pl')
-        two_weeks.append((datetime.date.today() + datetime.timedelta(days=i)))
+        two_weeks.append((datetime.date.today() + datetime.timedelta(days=i+1)))
         
 
-    today = datetime.date.today()
+    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
     doctor = User.objects.get(id=pk)
-    all_appointments = Appointment.objects.filter(doctor=doctor, start_date__range=(today, inf_date)).order_by('start_date')
+    all_appointments = Appointment.objects.filter(patient=None, doctor=doctor, start_date__range=(tomorrow, inf_date)).order_by('start_date')
+    form = AppointmentNoteForm()
 
+    if request.is_ajax and request.method == 'POST':
+        if 'usernewphone' in request.POST:
+            user_profile = UserProfile.objects.get(user=request.user)
+            user_profile.phone = request.POST['usernewphone']
+            user_profile.save()
+
+        booking_appointment = Appointment.objects.get(id=request.POST['selectappointmentnote'])
+        booking_appointment.patient = request.user
+        booking_appointment.description = request.POST['appointment_note']
 
         
+        booking_appointment.save()
+        return redirect('doctor', pk=pk)
+
+    
     context = {
         'appointments': all_appointments,
         'weeks': two_weeks,
-        'doctor': doctor
+        'doctor': doctor,
+        'user_phone': user_phone,
+        'form': form,
     }
     return render(request, 'doctorappointments.html', context)

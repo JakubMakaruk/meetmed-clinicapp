@@ -91,11 +91,11 @@ nav .cur {
   font-weight: 500;
 }
 
-.wrapper table .done .greentext {
-  color: #0a8f1c;
+.wrapper table .done .disabled {
+  cursor: context-menu;
 }
 
-.wrapper table .done .yellowtext {
-  color: #e7aa02;
+.wrapper table .done button {
+  width: 100%;
 }
 /*# sourceMappingURL=patientappointments.css.map */

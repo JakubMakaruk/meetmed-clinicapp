@@ -87,7 +87,7 @@
                             <hr>
                             <div class="description-properties">                        
                                 <h1>{{ appointment.title }}</h1>
-                                <p><span>Opis:</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta itaque vel laboriosam optio consectetur, perspiciatis maxime distinctio exercitationem unde magnam explicabo earum ratione a reprehenderit id illo vero esse. Ducimus eos aliquam laboriosam quisquam eveniet!</p>
+                                <p><span>Opis:</span> {{ appointment.description }}</p>
                                 <p><span>Doktor:</span> {{ appointment.doctor }}</p>
                                 <p><span>Pacjent:</span> {% if appointment.patient != None %} {{ appointment.patient }} {% else %} Brak {% endif %}</p>
                                 <p><span>Data:</span> {{ appointment.start_date|date:'d.m.Y' }}</p>
