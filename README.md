@@ -19,7 +19,10 @@ Projekt zaliczeniowy z przedmiotu "Medyczne Systemy Informacyjne", w którym stw
 - możliwość tworzenia notatek do konkretnej wizyty pacjenta
 - zmiana swoich danych personalnych (imię, nazwisko, telefon), a także danych do logowania (e-mail, hasło)
 #### Pacjent
-- podgląd wszystkich swoich wizyt ze strony pacjenta
+- podgląd wszystkich swoich wizyt ze strony pacjenta (historia wizyt)
+- wyszukanie lekarza z bazy wszystkich lekarzy poprzez filtrowanie danych
+- zapisywanie się na wizyty u konkretnego lekarza
+- anulowanie wizyty, jeśli wcześniej pacjent był na nią zapisany
 - zmiana swoich danych personalnych (imię, nazwisko, telefon), a także danych do logowania (e-mail, hasło)
 
 ## Użyte technologie
