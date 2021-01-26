@@ -7,7 +7,7 @@ Projekt zaliczeniowy z przedmiotu "Medyczne Systemy Informacyjne", w którym stw
 
 ## Funkcjonalności
 #### Gość
-- strona widoczna tylko dla gości
+- strona widoczna dla gości
 - panel rejestracji oraz logowania z walidacją danych
 #### Lekarz
 - możliwość korzystania z kalendarza w trybie widokowym dzień/tydzień/miesiąc (FullCalendar API)
