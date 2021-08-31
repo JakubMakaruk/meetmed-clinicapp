@@ -143,8 +143,6 @@ def doctorcalendar(request):
     form = AppointmentForm()
 
     if request.method == 'POST' and "button-add" in request.POST:
-        print(request.POST)
-        print(request.headers)
         if Appointment.objects.count() == 0:
             id = 1
         else:
@@ -157,7 +155,6 @@ def doctorcalendar(request):
             patient = User.objects.get(id=request.POST['patient'])
         else:
             patient = None
-        print(patient)
 
         end_date = start_date + ' ' + end_hour + ':00'
         start_date = start_date + ' ' + start_hour + ':00'
@@ -171,12 +168,10 @@ def doctorcalendar(request):
 
         print("START+DATE", start_date)
     elif (request.method == 'POST' and "button-remove" in request.POST) or (request.method == 'POST' and request.is_ajax):
-        print(request)
         appointment_id_to_remove = request.POST['selectappointments']
         appointment_to_remove = Appointment.objects.filter(id=appointment_id_to_remove)
         appointment_to_remove.delete()
     elif request.GET:
-        print("SIEMANDERO:", request)
         appointments_arr = []
         if request.GET.get('doctor') == 'all':
             all_appointments = Appointment.objects.all()
@@ -245,7 +240,6 @@ def doctorpanel(request):
     appointments_arr = []
     #total_appointments
     total_appointments = Appointment.objects.filter(doctor=request.user).count()
-    print("WSZYSTKIE: ", total_appointments)
     
     #total_today_appointments
     today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
@@ -254,7 +248,6 @@ def doctorpanel(request):
         total_today_appointments = Appointment.objects.filter(doctor=request.user, start_date__range=(today_min, today_max)).count()
     except:
         total_today_appointments = 0
-    print("WSZYSTKIE DZISIAJ: ", total_today_appointments)
 
     #total_patients
     patients = []
@@ -262,14 +255,12 @@ def doctorpanel(request):
     for a in all_appointments:
         if countPatientsWithoutDuplicates(patients, a.patient) and a.patient != None:
             patients.append(a.patient)
-    print(patients)
     total_patients = len(patients)
 
     #total_work_hours
     total_work = datetime.timedelta(hours=0, minutes=0)
     for a in all_appointments:
         total_work += a.end_date-a.start_date
-    print(total_work)
     total_work_days = total_work.days
 
     seconds = total_work.seconds
@@ -289,8 +280,6 @@ def doctorpanel(request):
     for i in week:
         countOfDay = Appointment.objects.filter(doctor=request.user, start_date__year=i.year, start_date__month=i.month, start_date__day=i.day).count()
         counterAppointmentsDay.append(countOfDay)
-        print(i, " tego dnia ", countOfDay)
-    print(counterAppointmentsDay)
 
     #ajax date to filename
     todayDate = datetime.date.today().strftime("%d%m%Y")
@@ -312,8 +301,6 @@ def doctorpanel(request):
 @allowed_users(allowed_roles=['Doctor', 'Patient'])
 def settings(request):
     if request.method == 'POST' and "update-personal-data" in request.POST:
-        print("SIEMA")
-
         current_user = request.user
 
         current_user_profile = None
@@ -395,7 +382,6 @@ def details(request, pk):
             id = 1
         else:
             id = AppointmentNote.objects.order_by('-id').first().id + 1
-        print(request.POST)
         current_appointment_id = request.POST['selectappointmentnote']
         current_appointment = Appointment.objects.get(id=current_appointment_id)
         note = request.POST['appointment_note']
@@ -446,7 +432,6 @@ def booking(request):
 @allowed_users(allowed_roles=['Patient'])
 def doctorappointments(request, pk):
     user_phone = UserProfile.objects.get(user=request.user).phone
-    print("USERPHONE = ", user_phone)
     inf_date = datetime.date(3000, 1, 1)
 
     two_weeks = []
