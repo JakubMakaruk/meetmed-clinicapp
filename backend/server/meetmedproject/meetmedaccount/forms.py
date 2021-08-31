@@ -5,12 +5,6 @@ from django import forms
 from .models import Appointment
 from .models import AppointmentNote
 
-# NIE DZIAŁA
-# class CreateUserForm(UserCreationForm):
-#     class Meta:
-#         model = User
-#         fields = ['first_name', 'last_name', 'username', 'password1', 'password2']
-#         model.email = model.username
 
 class DateInput(forms.DateInput):
     input_type = 'date'
